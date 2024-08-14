@@ -7,7 +7,7 @@
   }
   .filter{
     text-align: center;
-    margin-right: 2.5rem;
+    margin-right: 1.5rem;
     margin-top: 2rem;
     opacity: 0.7;
   }
@@ -30,7 +30,7 @@
     border-radius: 1rem;
     height:3.25rem ;
     padding: 1rem;
-    margin-left:10rem ;
+    margin-left:7rem ;
     display: flex;
     align-items: center;
 
@@ -38,6 +38,14 @@
   .weather{
     text-decoration: none;
     color: black;
+  }
+  .search-input{
+    margin-top: -25px;
+    box-shadow: 5px 5px rgb(255, 0, 8);
+    border-color: #000;
+    border-radius:25px ;
+    padding: 0.5rem 3rem 0.5rem 3rem ;
+    font-size: 1rem;
   }
 </style>
 <body>
@@ -75,14 +83,14 @@
   
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-kit-medical"></i></div>
-        <p>Emergency</p>
-  
+        <form class="d-flex" role="search">
+          <div><input id="search-bar" class="form-control me-2 search-input" type="search" placeholder="Search destinations" ></div>
+        </form>
       </div>
       <div class="tax-toggle">
         <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes</label>
+          <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes</label>
         </div>
       </div>
   </div>
@@ -119,4 +127,19 @@
      
     }
   });
+  const searchInput = document.getElementById('search-bar');
+  const listings = document.querySelectorAll('.listing-card');
+
+  searchInput.addEventListener('input', () => {
+    const searchQuery = searchInput.value.toLowerCase();
+    listings.forEach((listing) => {
+      const listingText = listing.textContent.toLowerCase();
+      if (listingText.includes(searchQuery)) {
+        listing.style.display = 'block';
+      } else {
+        listing.style.display = 'none';
+      }
+    });
+  });
+
 </script>

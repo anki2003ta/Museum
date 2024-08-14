@@ -1,0 +1,122 @@
+<% layout("/layouts/boilerplate") -%>
+<style>
+  #filters{
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+  }
+  .filter{
+    text-align: center;
+    margin-right: 2.5rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter a{
+    text-decoration: none;
+    color: #000;
+  }
+  .filter p{
+    font-size: 0.8rem;
+  }
+  .tax-info{
+    display: none;
+  }
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height:3.25rem ;
+    padding: 1rem;
+    margin-left:10rem ;
+    display: flex;
+    align-items: center;
+
+  }
+  .weather{
+    text-decoration: none;
+    color: black;
+  }
+</style>
+<body>
+
+  <div id="filters">
+    <div class="filter">
+      <div><i class="fa-solid fa-hotel"></i></div>
+      <a href="https://booking-1-h3l9.onrender.com"><p>Bookings</p></a>
+      
+
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-temperature-arrow-up weather"></i></div>      
+      <a href="https://anki2003ta.github.io/PRODIGY_WD_05/Task-1/index1.html"><p>Real-Time<br>Weather</p></a>
+    </div>
+    <div id="filters"><!--Analysis-->
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+  
+      </div>
+      <div class="filter">
+        <div><i class="fa-regular fa-message"></i></div>
+        <p>ChatBot</p>
+  
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-money-check-dollar"></i></div>
+        <a href="https://arpi2003ta.github.io/currency_converter/"><p>Currency<br>Converter</p></a>
+  
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-money-bill"></i></div>
+        <a href="https://arpi2003ta.github.io/mortgage_calculator/"><p>Mortgage<br>Calculator</p></a>
+  
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-kit-medical"></i></div>
+        <p>Emergency</p>
+  
+      </div>
+      <div class="tax-toggle">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes</label>
+        </div>
+      </div>
+  </div>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <%for (let listing of allListings){%>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p class="card-text">
+              <b><%= listing.title %><br></b>
+              &#8377;<%= listing.price.toLocaleString("en-IN") %> /night
+              <i class="tax-info">&nbsp; &nbsp; &nbsp;&nbsp; +18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
+      <%}%>
+  </div>
+  
+  
+</body>
+<script>
+  let taxswitch=document.getElementById("flexSwitchCheckDefault");
+  taxswitch.addEventListener("click",()=>{
+    let taxInfo=document.getElementsByClassName("tax-info");
+    for(info of taxInfo){
+      if(info.style.display!="inline"){
+        info.style.display="inline";
+      }else{
+        info.style.display="none";
+      }
+     
+    }
+  });
+</script>

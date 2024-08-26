@@ -13,7 +13,7 @@ body{
   background-color: white;
 }
 .fa-compass{
-  color: #fe424d;
+  color: rgb(197, 55, 55);
   font-size: 2rem;
 }
 .nav-link{
@@ -31,11 +31,14 @@ body{
   text-decoration: none;
   color: #222222;
 }
+.f-info-socials a:hover{
+  color: #000;
+}
 .f-info-links,
 .f-info-socials,
 .f-info-brand{
-  width: 100%;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -46,7 +49,7 @@ body{
 }
 .f-info{
   text-align: center;
-  height: 8rem;
+  height: 5.5rem;
   background-color: #ebebeb;
   display:flex;
   flex-wrap: wrap;
@@ -102,6 +105,21 @@ body{
 .show-card{
   padding-left: 0;
   padding-right: 0;
+}
+.down{
+  display:block;
+  
+  width:fit-content;
+  border:1px solid rgb(16, 16, 16);
+  padding:14px 40px;
+  border-radius: 9px;
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(21, 21, 21);
+  transition: background-color 0.5s;
+}
+.down:hover{
+  color: #ebebeb;
 }
 .star{
   color: orange;

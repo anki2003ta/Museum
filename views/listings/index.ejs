@@ -7,7 +7,7 @@
   }
   .filter{
     text-align: center;
-    margin-right: 1.5rem;
+    margin-right: 2.5rem;
     margin-top: 2rem;
     opacity: 0.7;
   }
@@ -22,30 +22,9 @@
   .filter p{
     font-size: 0.8rem;
   }
-  .tax-info{
-    display: none;
-  }
-  .tax-toggle{
-    border: 1px solid black;
-    border-radius: 1rem;
-    height:3.25rem ;
-    padding: 1rem;
-    margin-left:7rem ;
-    display: flex;
-    align-items: center;
-
-  }
   .weather{
     text-decoration: none;
     color: black;
-  }
-  .search-input{
-    margin-top: -25px;
-    box-shadow: 5px 5px rgb(255, 0, 8);
-    border-color: #000;
-    border-radius:25px ;
-    padding: 0.5rem 3rem 0.5rem 3rem ;
-    font-size: 1rem;
   }
 </style>
 <body>
@@ -54,7 +33,7 @@
     <div class="filter">
       <div><i class="fa-solid fa-hotel"></i></div>
       <a href="https://booking-1-h3l9.onrender.com"><p>Bookings</p></a>
-      
+
 
     </div>
     <div class="filter">
@@ -65,33 +44,27 @@
       <div class="filter">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending</p>
-  
+
       </div>
       <div class="filter">
         <div><i class="fa-regular fa-message"></i></div>
         <p>ChatBot</p>
-  
+
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-money-check-dollar"></i></div>
         <a href="https://arpi2003ta.github.io/currency_converter/"><p>Currency<br>Converter</p></a>
-  
+
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-money-bill"></i></div>
         <a href="https://arpi2003ta.github.io/mortgage_calculator/"><p>Mortgage<br>Calculator</p></a>
-  
+
       </div>
       <div class="filter">
-        <form class="d-flex" role="search">
-          <div><input id="search-bar" class="form-control me-2 search-input" type="search" placeholder="Search destinations" ></div>
-        </form>
-      </div>
-      <div class="tax-toggle">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes</label>
-        </div>
+        <div><i class="fa-solid fa-kit-medical"></i></div>
+        <p>Emergency</p>
+
       </div>
   </div>
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
@@ -103,43 +76,14 @@
           <div class="card-body">
             <p class="card-text">
               <b><%= listing.title %><br></b>
-              &#8377;<%= listing.price.toLocaleString("en-IN") %> /night
-              <i class="tax-info">&nbsp; &nbsp; &nbsp;&nbsp; +18% GST</i>
+              &#8377;<%= listing.price.toLocaleString("en-IN") %>/-  Per Person <br>
+              &#8377;<%= ((listing.price)/2).toLocaleString("en-IN") %>/-  Per Child (below 18) 
             </p>
           </div>
         </div>
       </a>
       <%}%>
   </div>
-  
-  
+
+
 </body>
-<script>
-  let taxswitch=document.getElementById("flexSwitchCheckDefault");
-  taxswitch.addEventListener("click",()=>{
-    let taxInfo=document.getElementsByClassName("tax-info");
-    for(info of taxInfo){
-      if(info.style.display!="inline"){
-        info.style.display="inline";
-      }else{
-        info.style.display="none";
-      }
-     
-    }
-  });
-  const searchInput = document.getElementById('search-bar');
-  const listings = document.querySelectorAll('.listing-card');
-
-  searchInput.addEventListener('input', () => {
-    const searchQuery = searchInput.value.toLowerCase();
-    listings.forEach((listing) => {
-      const listingText = listing.textContent.toLowerCase();
-      if (listingText.includes(searchQuery)) {
-        listing.style.display = 'block';
-      } else {
-        listing.style.display = 'none';
-      }
-    });
-  });
-
-</script>

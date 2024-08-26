@@ -30,6 +30,21 @@ module.exports.createListing =async(req,res,next) => {
   req.flash("success","New Listing Created!");
   res.redirect("/listings");
 };
+/*module.exports.createListing = async (req, res, next) => {
+  let listing = req.body.listing;
+  let image = req.files.image[0];
+  let pdf = req.files.pdf[0];
+  const newListing = new Listing(req.body.listing);
+  newListing.owner = req.user._id;
+  newListing.image = { url: image.path, filename: image.filename };
+  newListing.pdf = { url: pdf.path, filename: pdf.filename, contentType: pdf.mimetype, fileSize: pdf.size };
+  let savedListing = await newListing.save();
+  console.log(savedListing);
+  req.flash("success", "New Listing Created!");
+  res.redirect("/listings");
+};*/
+
+
 module.exports.renderEditForm = async (req,res) =>{
   let {id} =req.params;
   const listing = await Listing.findById(id);
@@ -54,6 +69,22 @@ module.exports.updateListing = async (req,res) => {
   req.flash("success","Listing Updated!");
   res.redirect(`/listings/${id}`);
 };
+/*module.exports.updateListing = async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  if (typeof req.files.image !== "undefined") {
+    let image = req.files.image[0];
+    listing.image = { url: image.path, filename: image.filename };
+  }
+  if (typeof req.files.pdf !== "undefined") {
+    let pdf = req.files.pdf[0];
+    listing.pdf = { url: pdf.path, filename: pdf.filename, contentType: pdf.mimetype, fileSize: pdf.size };
+  }
+  await listing.save();
+  req.flash("success", "Listing Updated!");
+  res.redirect(`/listings/${id}`);
+};*/
+
 module.exports.destroyListing = async (req,res) =>{
   let {id} =req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);

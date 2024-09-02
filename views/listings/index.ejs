@@ -26,29 +26,133 @@
     text-decoration: none;
     color: black;
   }
+  .photo_slider{
+    border-radius:10px;
+  /*margin-left: 150px;*/
+  width:100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider{
+	width:800px;
+	height:500px;
+	border-radius:10px;
+	overflow:hidden;
+}
+.slides{
+	width: 500%;
+	height:500px;
+	display:flex;
+}
+.slides input{
+	display:none;
+}
+.slide{
+	width:20%;
+	transition:2s;
+}
+.slide img{
+	width:1050px;
+	height:500px;
+}
+.navigation-manual{
+	position:absolute;
+	width:800px;
+	margin-top:-40px;
+	display:flex;
+	justify-content:center;
+}
+.manual-btn{
+	border:2px solid #40D3DC;
+	padding: 5px;
+	border-radius:10px;
+	cursor: pointer;
+	transition:1s;
+}
+.manual-btn:not(:last-child){
+	margin-right:40px;
+}
+.manual-btn:hover{
+	background:#40D3DC;
+}
+#radio1:checked~.first{
+	margin-left:0;
+}
+#radio2:checked~.first{
+	margin-left:-20%;
+}
+#radio3:checked~.first{
+	margin-left:-40%;
+}
+#radio4:checked~.first{
+	margin-left:-60%;
+}
+.navigation-auto{
+	position: absolute;
+	display:flex;
+	width:800px;
+	justify-content:center;
+	margin-top:460px;
+}
+.navigation-auto div{
+	border:2px solid #40D3DC;
+	padding:5px;
+	border-radius: 10px;
+	transition:1s;
+}
+.navigation-auto div:not(:last-child){
+	margin-right:40px;
+}
+#radio1:checked~.navigation-auto .auto-btn1{
+	background:#40D3DC;
+}
+#radio2:checked~.navigation-auto .auto-btn2{
+	background:#40D3DC;
+}
+#radio3:checked~.navigation-auto .auto-btn3{
+	background:#40D3DC;
+}
+#radio4:checked~.navigation-auto .auto-btn4{
+	background:#40D3DC;
+}
+.bar {
+  height: 50px; /* added height */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4rem;
+  margin-left: 8px;
+  font-weight: bold;
+  color:rgb(238, 144, 22);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.h_bar {
+  width: 100%;
+  margin: 10px;
+  border: 2px solid goldenrod; /* increased border width to make it more visible */
+  border-color: goldenrod; /* changed border color to a darker shade */
+}
+
 </style>
 <body>
 
   <div id="filters">
-    <div class="filter">
-      <div><i class="fa-solid fa-hotel"></i></div>
-      <a href="https://booking-1-h3l9.onrender.com"><p>Bookings</p></a>
-
-
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-temperature-arrow-up weather"></i></div>      
-      <a href="https://anki2003ta.github.io/PRODIGY_WD_05/Task-1/index1.html"><p>Real-Time<br>Weather</p></a>
-    </div>
-    <div id="filters"><!--Analysis-->
+    <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-temperature-arrow-up weather"></i></div>      
+        <a href="https://anki2003ta.github.io/PRODIGY_WD_05/Task-1/index1.html"><p>Real-Time<br>Weather</p></a>
+      </div>
       <div class="filter">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending</p>
-
-      </div>
-      <div class="filter">
-        <div><i class="fa-regular fa-message"></i></div>
-        <p>ChatBot</p>
 
       </div>
       <div class="filter">
@@ -57,16 +161,50 @@
 
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-money-bill"></i></div>
-        <a href="https://arpi2003ta.github.io/mortgage_calculator/"><p>Mortgage<br>Calculator</p></a>
-
-      </div>
-      <div class="filter">
         <div><i class="fa-solid fa-kit-medical"></i></div>
         <p>Emergency</p>
 
       </div>
   </div>
+  <div class="photo_slider">
+    <div class="slider">
+      <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <div class="slide first">
+          <img src="https://cdn.britannica.com/51/123551-050-78D3F9F5/Courtyard-Indian-Museum-Kolkata-India.jpg" alt="Image1">
+        </div>
+        <div class="slide">
+          <img src="https://www.solitarytraveller.com/wp-content/uploads/2020/12/indian_museum_mumbai02.jpg" alt="Image2">
+        </div>
+        <div class="slide">
+          <img src="https://kolkatatourism.travel/images/places-to-visit/headers/indian-museum-kolkata-entry-fee-timings-holidays-reviews-header.jpg" alt="Image3">
+        </div>
+        <div class="slide">
+          <img src="https://imgmedia.lbb.in/media/2020/01/5e0dd5ab3dc45575e7bad3c6_1577964971000.jpg" alt="Image4">
+        </div>
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+          <div class="auto-btn4"></div>
+        </div>    
+      </div>
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+    </div>
+  </div>
+  <hr class="h_bar"/>
+  <div class="bar">
+    WELCOME TO INDIAN MUSEUM KOLKATA-FOUNDED 1814
+  </div>
+  <hr class="h_bar"/>
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
     <%for (let listing of allListings){%>
       <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -87,3 +225,13 @@
 
 
 </body>
+<script type="text/javascript">
+  var counter=1;
+  setInterval(function(){
+    document.getElementById('radio'+counter).checked=true;
+    counter++;
+    if(counter>4){
+      counter=1;
+    }
+  },3000);
+</script>

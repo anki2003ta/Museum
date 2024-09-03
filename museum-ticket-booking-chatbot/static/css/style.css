@@ -1,0 +1,67 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../museum-background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.chat-container {
+    width: 400px;
+    height: 600px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#chatbox {
+    height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #d1f7d6;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#send-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .chat-container {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        border-radius: 0;
+    }
+}

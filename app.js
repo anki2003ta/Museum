@@ -16,6 +16,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
+
+//Uncomment the following  next two comments if you have not set up local .env files to run the program. Also  comment this code too    await mongoose.connect(dbUrl);
 //const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl =process.env.ATLASDB_URL;
 main()

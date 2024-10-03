@@ -1,11 +1,11 @@
 const User = require("../models/user");
 const { validationResult } = require('express-validator');
 
-module.exports.renderSignupForm = (req, res) => {
+const renderSignupForm = (req, res) => {
   res.render("users/signup.ejs");
 };
 
-module.exports.signup = async (req, res) => {
+const signup = async (req, res) => {
   try {
     // Check for validation errors
     const errors = validationResult(req);
@@ -33,17 +33,17 @@ module.exports.signup = async (req, res) => {
   }
 };
 
-module.exports.renderLoginForm = (req, res) => {
+const renderLoginForm = (req, res) => {
   res.render("users/login.ejs");
 };
 
-module.exports.login = async (req, res) => {
+const login = async (req, res) => {
   req.flash("success", "Welcome to Wanderlust! You are logged in!");
   let redirectUrl = res.locals.redirectUrl || "/listings";
   res.redirect(redirectUrl);
 };
 
-module.exports.logout = (req, res, next) => {
+const logout = (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);
@@ -51,4 +51,12 @@ module.exports.logout = (req, res, next) => {
     req.flash("success", "You are logged out!");
     res.redirect("/listings");
   });
+};
+
+module.exports = {
+  renderSignupForm,
+  signup,
+  renderLoginForm,
+  login,
+  logout
 };

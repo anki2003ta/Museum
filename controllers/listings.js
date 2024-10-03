@@ -5,6 +5,7 @@ const index = async (req, res) => {
   res.render("listings/index.ejs", { allListings });
 };
 
+
 const renderNewForm = (req, res) => res.render("listings/new.ejs");
 
 const showListing = async (req, res) => {
@@ -19,6 +20,7 @@ const showListing = async (req, res) => {
   }
 
   res.render("listings/show.ejs", { listing });
+
 };
 
 const createListing = async (req, res, next) => {
@@ -27,10 +29,12 @@ const createListing = async (req, res, next) => {
 
   const newListing = new Listing(listingData);
   newListing.owner = req.user._id;
+
   newListing.image = { url, filename };
 
   const savedListing = await newListing.save();
   console.log(savedListing);
+
 
   req.flash("success", "New Listing Created!");
   res.redirect("/listings");
@@ -63,12 +67,15 @@ const updateListing = async (req, res) => {
   res.redirect(`/listings/${id}`);
 };
 
+("success","Listing Deleted Successfully!");
+
 const destroyListing = async (req, res) => {
   const { id } = req.params;
   const deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
 
   req.flash("success", "Listing Deleted Successfully!");
+
   res.redirect("/listings");
 };
 

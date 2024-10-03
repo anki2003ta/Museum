@@ -7,6 +7,7 @@ body{
 .container{
   flex: 1;
 }
+
 /*header*/
 .navbar{
   height: 5rem;
@@ -16,9 +17,28 @@ body{
   color: rgb(197, 55, 55);
   font-size: 2rem;
 }
+
+div.container-fluid {
+  padding: 0 5rem;
+}
+
+a.navbar-brand {
+  margin-right: 5px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .nav-link{
   color: #222222 !important;
 }
+
+#highlight-text:hover {
+  color: dodgerblue;
+}
+
 /*footer*/
 .f-info-links a{
   text-decoration: none;

@@ -1,7 +1,79 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="row mt-3">
-  <div class="alert alert-danger col-6 offset-3" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <p class="alert-heading"><%= message %></p>
+
+<style>
+  .error-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+  }
+  .error-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    color: #333;
+  }
+  .error-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #ff6b6b;
+  }
+  .error-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .error-message {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .error-btn {
+    background: #6a11cb;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem; 
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+  }
+  .error-btn:hover {
+    background: #5a09c9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<div class="error-container">
+  <div class="error-card">
+    <div class="error-icon">
+      <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <h1 class="error-title">Oops!</h1>
+    <p class="error-message"><%= message %></p>
+    <a href="/listings" class="error-btn">Go Back Home</a>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  const errorCard = document.querySelector('.error-card');
+  errorCard.style.opacity = '0';
+  errorCard.style.transform = 'scale(0.9)';
+  
+  setTimeout(() => {
+    errorCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    errorCard.style.opacity = '1';
+    errorCard.style.transform = 'scale(1)';
+  }, 100);
+});
+</script>

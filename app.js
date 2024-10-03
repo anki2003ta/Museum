@@ -19,7 +19,7 @@ const userRouter = require("./routes/user.js");
 /* if you want to run the project and do not have .env files configured , please uncomment the next
 two commented codes and comment down this code   await mongoose.connect(dbUrl); You project will run succesfully*/
 
-//const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl =process.env.ATLASDB_URL;
 main()
   .then(() => {
@@ -28,8 +28,8 @@ main()
     console.log(err);
   });
 async function main(){
-  //await mongoose.connect(MONGO_URL);
-  await mongoose.connect(dbUrl);
+  await mongoose.connect(MONGO_URL);
+  // await mongoose.connect(dbUrl);
 }
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));

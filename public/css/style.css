@@ -86,6 +86,16 @@ a.navbar-brand {
   align-items: space-evenly;
 }
 /*cards*/
+
+.card-box {
+  padding-block: 10px;
+}
+
+.card-image {
+  width: 100%;
+  object-fit: contain;
+}
+
 .listing-card{
   border: none !important;
   margin-bottom: 2rem;
@@ -100,6 +110,18 @@ a.navbar-brand {
 }
 .card-text p{
   font-weight: 400 !important;
+}
+
+.card-title {
+  margin-top: 10px;
+}
+
+.cd-text {
+  margin-block: 10px;
+}
+
+.card-btn {
+  margin-top: 10px;
 }
 
 .listing-link{

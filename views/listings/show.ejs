@@ -14,7 +14,13 @@
           <p class="card-text"><%= listing.country %></p>
         </div>
       </div>
-  </div> 
+  </div>
+  <% if(!(currUser && listing.owner._id.equals(currUser._id))) {%>
+  <div class="btns">
+    <br>
+    <a href="https://muse-mate-soumyadiproy16s-projects.vercel.app/" class="btn btn-dark col-1 offset-3 edit-btn" style="margin-bottom: 15px;">Bot Payment</a>
+  </div>
+  <% } %>
   <% if(currUser && listing.owner._id.equals(currUser._id)) {%>
   <div class="btns">
     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>

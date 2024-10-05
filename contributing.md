@@ -62,7 +62,7 @@ Thank you for considering contributing to **Museum**! 🎨 Your contributions he
 4. **Start the development server**:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 ---

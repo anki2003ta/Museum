@@ -57,7 +57,7 @@ To launch the application locally, follow these steps:
 1. **Start the development server**:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 2. **Access the application**: 🌐 Open your browser and navigate to `http://localhost:3000`.

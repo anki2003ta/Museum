@@ -4,6 +4,8 @@
 
 Welcome to **Museum** – the ultimate platform that empowers museums to effortlessly manage exhibits and deliver captivating experiences for visitors! 🖼️🎨 Whether you're showcasing ancient artifacts or modern masterpieces, Museum streamlines workflows, enhances visitor engagement, and brings exhibits to life with ease.
 
+Museum is a platform designed for museums to easily manage exhibits and engage visitors with interactive displays. It provides tools for organizing exhibits, offering detailed visitor information, and updating content in real time. Mobile-friendly, it ensures a seamless experience across all devices.
+
 ---
 
 ## 📊 Stats Board

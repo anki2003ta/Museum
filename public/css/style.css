@@ -17,6 +17,9 @@ body{
   color: rgb(197, 55, 55);
   font-size: 2rem;
 }
+.fa-compass:hover {
+  color: rgb(255, 99, 99); /* Brighter red on hover */
+}
 
 div.container-fluid {
   padding: 0 5rem;
@@ -66,7 +69,13 @@ a.navbar-brand {
 .f-info-socials i{
   font-size: 1.3rem !important;
   margin-right: 1rem !important;
+  transition: color 0.3s ease, transform 0.3s ease; /* Added smooth transition */
 }
+.f-info-socials i:hover{
+  color: dodgerblue; /* Change icon color on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
 .f-info{
   text-align: center;
   height: 5.5rem;
@@ -143,4 +152,9 @@ a.navbar-brand {
 }
 .star{
   color: orange;
+  transition: color 0.3s ease, transform 0.3s ease; /* Added smooth transition */
+}
+.star:hover {
+  color: gold; /* Change to gold on hover */
+  transform: scale(1.2); /* Slight zoom effect */
 }

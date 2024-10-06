@@ -1,18 +1,33 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="row">
-  <h1 class="col-6 offset-3">Login </h1>
-  <div class="col-8 offset-2">
-    <form action="/login" method="POST" class="needs-validation" novalidate>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-          <input name="username" id="username" placeholder="username" type="text" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-          <input name="password" id="password" placeholder="password" type="password" class="form-control" required>
-      </div>
-      <button class="btn btn-success">Login</button>
+<div class="row justify-content-center my-5">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg border-0 rounded">
+      <div class="card-body p-4">
+        <h1 class="text-center mb-4 display-6 text-primary">Login to Your Account</h1>
+        <form action="/login" method="POST" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control form-control-lg rounded-pill" required>
+            <div class="invalid-feedback">
+              Please enter your username.
+            </div>
+          </div>
 
-    </form>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
+            <div class="invalid-feedback">
+              Please enter your password.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 btn-lg rounded-pill mt-3">Login</button>
+        </form>
+
+        <p class="text-center mt-4">
+          Don't have an account? <a href="/signup" class="text-decoration-none">Sign Up</a>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

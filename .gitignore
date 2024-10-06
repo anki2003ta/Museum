@@ -1,2 +1,61 @@
+# Node.js dependencies
 node_modules/
+
+# Environment variables
 .env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Build directories
+dist/
+build/
+out/
+.temp/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+desktop.ini  # Windows
+
+# Coverage directory used by testing tools
+coverage/
+
+# Temporary or backup files
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# Compiled binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Production directories (optional, if relevant)
+public/
+static/
+
+# Ignore any other sensitive or generated files
+*.env.local
+*.env.development
+*.env.test
+*.env.production
+
+# Ignore the output of `npm pack`
+*.tgz

@@ -1,68 +1,56 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="container">
-  <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-lg">
-        <div class="card-body p-5">
-          <h2 class="card-title text-center mb-4">Login</h2>
-          <form action="/login" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control" required>
-              </div>
+<div class="row justify-content-center my-5">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg border-0 rounded">
+      <div class="card-body p-4">
+        <h1 class="text-center mb-4 display-6" style="color: black; font-weight: bold;">Log In</h1>
+        <form action="/login" method="POST" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" id="email" placeholder="Enter your email" type="email" class="form-control form-control-lg rounded-pill" required>
+            <div class="valid-feedback">
+              Looks good!
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control" required>
-              </div>
+            <div class="invalid-feedback">
+              Please enter a valid email.
             </div>
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary btn-lg">Login</button>
-            </div>
-          </form>
-          <div class="text-center mt-3">
-            <a href="#" class="text-decoration-none">Forgot password?</a>
           </div>
-        </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please enter a valid password.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100 btn-lg rounded-pill mt-3">Log In</button>
+        </form>
+        <p class="text-center mt-4">
+          Don't have an account? <a href="/signup" class="text-decoration-none">Sign Up</a>
+        </p>
       </div>
     </div>
   </div>
 </div>
 
-<style>
-  body {
-    background-color: #f8f9fa;
-  }
-  .card {
-    border-radius: 1rem;
-    border: none;
-  }
-  .card-title {
-    color: #333;
-    font-weight: bold;
-  }
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    transition: all 0.3s ease;
-  }
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  .input-group-text {
-    background-color: #f8f9fa;
-    border-right: none;
-  }
-  .form-control {
-    border-left: none;
-  }
-  .form-control:focus {
-    box-shadow: none;
-    border-color: #ced4da;
-  }
-</style>
+<!-- Bootstrap form validation -->
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>

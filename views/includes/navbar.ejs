@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa fa-compass" aria-hidden="true"></i></a>
+    <a class="navbar-brand" href="/listings">
+      <img src="/logonew.jpg" alt="Logo" width="45" height="45" style="border-radius: 10px;">
+
+    </a>
     <button 
     class="navbar-toggler" 
     type="button" 
     data-bs-toggle="collapse" 
-    data-bs-target="#navbarNavAltMarkup" 
-    >
+    data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -17,12 +19,11 @@
         <a class="nav-link" href="/listings/new">Create-New</a>
         <% if(!currUser){%>
           <a class="nav-link" href="/login"><b id="highlight-text">Log In</b></a>
-        <a class="nav-link" href="/signup"><b id="highlight-text">Sign Up</b></a>
+          <a class="nav-link" href="/signup"><b id="highlight-text">Sign Up</b></a>
         <%}%>
         <% if(currUser){%>
-        <a class="nav-link" href="/logout"><b id="highlight-text">Log Out</b></a>
+          <a class="nav-link" href="/logout"><b id="highlight-text">Log Out</b></a>
         <%}%>
-
       </div>
     </div>
   </div>

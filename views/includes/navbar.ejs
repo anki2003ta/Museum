@@ -1,28 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa fa-compass" aria-hidden="true"></i></a>
-    <button 
-    class="navbar-toggler" 
-    type="button" 
-    data-bs-toggle="collapse" 
-    data-bs-target="#navbarNavAltMarkup" 
-    >
+    <!-- Brand Icon -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa fa-compass" aria-hidden="true"></i>
+    </a>
+
+    <!-- Toggler Button for Collapsing Navbar on Small Screens -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Collapsible Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Left side nav -->
       <div class="navbar-nav">
         <a class="nav-link logo" href="/listings">Explore</a>
       </div>
+
+      <!-- Right side nav (aligned to the right using ms-auto) -->
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Create-New</a>
-        <% if(!currUser){%>
-          <a class="nav-link" href="/login"><b id="highlight-text">Log In</b></a>
-        <a class="nav-link" href="/signup"><b id="highlight-text">Sign Up</b></a>
-        <%}%>
-        <% if(currUser){%>
-        <a class="nav-link" href="/logout"><b id="highlight-text">Log Out</b></a>
-        <%}%>
 
+        <!-- Conditional rendering for Login/Signup or Logout -->
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/login"><b id="highlight-text">Log In</b></a>
+          <a class="nav-link" href="/signup"><b id="highlight-text">Sign Up</b></a>
+        <% } %>
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout"><b id="highlight-text">Log Out</b></a>
+        <% } %>
       </div>
     </div>
   </div>

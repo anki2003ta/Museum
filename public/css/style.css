@@ -43,48 +43,79 @@ a.navbar-brand {
 }
 
 /*footer*/
-.f-info-links a{
-  text-decoration: none;
-  color: #222222;
-}
-.f-info-links a:hover{
-  text-decoration: underline !important;
-}
-.f-info-socials a{
-  text-decoration: none;
-  color: #222222;
-}
-.f-info-socials a:hover{
-  color: #000;
-}
-.f-info-links,
-.f-info-socials,
-.f-info-brand{
+.f-info {
+  text-align: center;
+  background-color: #ebebeb;
   display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 1rem; /* Add padding for better spacing */
 }
 
-.f-info-socials i{
-  font-size: 1.3rem !important;
-  margin-right: 1rem !important;
-  transition: color 0.3s ease, transform 0.3s ease; /* Added smooth transition */
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%; /* Ensure full width */
+  margin-bottom: 0.5rem; /* Add space between sections */
 }
-.f-info-socials i:hover{
+
+/* Link styles */
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+  margin: 0 1rem; /* Space out links */
+}
+
+.f-info-links a:hover {
+  text-decoration: underline !important;
+}
+
+.f-info-socials a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-socials a:hover {
+  color: #000;
+}
+
+/* Socials icons */
+.f-info-socials {
+  display: flex;
+  justify-content: center; /* Center social links */
+  flex-wrap: wrap; /* Wrap icons on smaller screens */
+}
+
+.f-info-socials i {
+  font-size: 1.3rem !important;
+  margin: 0 1rem; /* Horizontal spacing between icons */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.f-info-socials i:hover {
   color: dodgerblue; /* Change icon color on hover */
   transform: scale(1.1); /* Slight zoom effect */
 }
 
-.f-info{
-  text-align: center;
-  height: 5.5rem;
-  background-color: #ebebeb;
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
+/* Brand information */
+.f-info-brand {
+  margin-top: 0.5rem; /* Space above brand text */
 }
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .f-info-links,
+  .f-info-socials,
+  .f-info-brand {
+    flex-direction: column; /* Stack elements vertically on small screens */
+  }
+
+  .f-info-socials i {
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-bottom: 0.5rem; /* Add bottom margin for spacing */
+  }
+}
+
 /*cards*/
 .listing-card{
   border: none !important;

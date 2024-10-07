@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") -%>
 <div class="container">
   <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-8 col-lg-4">
       <div class="card shadow-lg">
         <div class="card-body p-5">
           <h2 class="card-title text-center mb-4">Sign Up</h2>
@@ -10,34 +10,26 @@
               <label for="username" class="form-label">Username</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control" required>
+                <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control" required aria-label="Username">
               </div>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="invalid-feedback">
-                Please enter a valid username
-              </div>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter a valid username</div>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                <input name="email" id="email" placeholder="Enter your email" type="email" class="form-control" required>
+                <input name="email" id="email" placeholder="Enter your email" type="email" class="form-control" required aria-label="Email">
               </div>
-              <div class="invalid-feedback">
-                Please enter a valid email address
-              </div>
+              <div class="invalid-feedback">Please enter a valid email address</div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control" required>
+                <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control" required aria-label="Password">
               </div>
-              <div class="invalid-feedback">
-                Please enter a password
-              </div>
+              <div class="invalid-feedback">Please enter a password</div>
             </div>
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
@@ -94,15 +86,14 @@
   (function () {
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-          form.classList.add('was-validated')
-        }, false)
-      })
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
   })()
 </script>

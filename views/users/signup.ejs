@@ -1,67 +1,83 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="row justify-content-center my-5">
-  <div class="col-md-6 col-lg-5">
-    <div class="card shadow-lg border-0 rounded">
-      <div class="card-body p-4">
-        <h1 class="text-center mb-4 display-6" style="color: black; font-weight: bold;">Create Your Account</h1>
-        <form action="/signup" method="POST" class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control form-control-lg rounded-pill" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please enter a valid username.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input name="email" id="email" placeholder="Enter your email" type="email" class="form-control form-control-lg rounded-pill" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please enter a valid email.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-success w-100 btn-lg rounded-pill mt-3">Sign Up</button>
-        </form>
-        <p class="text-center mt-4">
-          Already have an account? <a href="/login" class="text-decoration-none">Log In</a>
-        </p>
+<div class="row">
+  <h1 class="col-6 offset-3">SignUp Form</h1>
+  <div class="col-8 offset-2">
+    <form id="signupForm" action="/signup" method="POST" novalidate>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input name="username" id="username" placeholder="username" type="text" class="form-control" required>
+        <div class="error-message" id="usernameError" style="color: red; display: none;">
+          Please enter a valid username (at least 3 characters).
+        </div>
       </div>
-    </div>
+      
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input name="email" id="email" placeholder="email" type="email" class="form-control" required>
+        <div class="error-message" id="emailError" style="color: red; display: none;">
+          Please enter a valid email address.
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input name="password" id="password" placeholder="password" type="password" class="form-control" required>
+        <div class="error-message" id="passwordError" style="color: red; display: none;">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-success">SignUp</button>
+    </form>
   </div>
 </div>
 
-<!-- Bootstrap form validation -->
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function () {
-    'use strict'
-    var forms = document.querySelectorAll('.needs-validation')
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
+// JavaScript form validation
+document.getElementById('signupForm').addEventListener('submit', function (event) {
+  // Prevent form submission for validation
+  event.preventDefault();
+  
+  // Get form fields
+  var username = document.getElementById('username').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value.trim();
+  
+  // Get error message elements
+  var usernameError = document.getElementById('usernameError');
+  var emailError = document.getElementById('emailError');
+  var passwordError = document.getElementById('passwordError');
+  
+  // Reset error messages
+  usernameError.style.display = 'none';
+  emailError.style.display = 'none';
+  passwordError.style.display = 'none';
+
+  // Validation flags
+  var isValid = true;
+
+  // Username validation (at least 3 characters)
+  if (username.length < 3) {
+    usernameError.style.display = 'block';
+    isValid = false;
+  }
+
+  // Email validation (simple regex pattern)
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    emailError.style.display = 'block';
+    isValid = false;
+  }
+
+  // Password validation (at least 6 characters)
+  if (password.length < 6) {
+    passwordError.style.display = 'block';
+    isValid = false;
+  }
+
+  // If all validations pass, submit the form
+  if (isValid) {
+    this.submit();  // Submits the form if validation is successful
+  }
+});
 </script>

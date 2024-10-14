@@ -32,7 +32,9 @@ async function main(){
   // await mongoose.connect(dbUrl);
 }
 app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
+
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
@@ -69,6 +71,16 @@ app.use((req,res,next) =>{
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+app.get('/privacy', (req, res) => {
+  res.render('privacy'); // This should be placed before the app.all("*") block
+});
+
+// Catch-all route for undefined paths
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page Not Found!"));
+});
+
+
 //if any of the incomming request does not match then throw this error
 app.all("*",(req,res,next) =>{
   next(new ExpressError(404,"Page Not Found!"));
@@ -78,6 +90,12 @@ app.use((err,req,res,next) =>{
   let {statusCode=500,message="Something went wrong!"}=err;
   res.status(statusCode).render("error.ejs",{message});
   //res.status(statusCode).send(message);
+});
+
+app.use((err, req, res, next) => {
+  console.log(err); // Log the full error to see what’s causing the issue
+  let { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).render("error.ejs", { message });
 });
 
 app.listen(8080,()=>{

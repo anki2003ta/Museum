@@ -158,3 +158,21 @@ a.navbar-brand {
   color: gold; /* Change to gold on hover */
   transform: scale(1.2); /* Slight zoom effect */
 }
+/* Scroll to top button */
+.scroll-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000; /* Default color, can be changed */
+  color: white;
+  padding: 10px 18px;
+  font-size: 18px;
+  border-radius: 10%;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.scroll-top:hover {
+  background-color: #555; /* Change hover color */
+}

@@ -1,0 +1,23 @@
+<!-- views/scrollToTop.ejs -->
+<div id="scrollTopBtn" class="scroll-top" onclick="scrollToTop()">
+    ↑
+</div>
+  
+<script>
+    // Show button when user scrolls down
+    window.onscroll = function () {
+      var scrollTopBtn = document.getElementById('scrollTopBtn');
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    };
+  
+    // Function to scroll to top
+    function scrollToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+  

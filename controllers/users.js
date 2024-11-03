@@ -5,7 +5,7 @@ const renderSignupForm = (req, res) => {
   res.render("users/signup.ejs");
 };
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   try {
     // Check for validation errors
     const errors = validationResult(req);
@@ -53,10 +53,23 @@ const logout = (req, res, next) => {
   });
 };
 
+// Render the password recovery form
+const renderForgotPasswordForm = (req, res) => {
+  res.render('users/forgot.ejs');
+};
+
+// Handle the password recovery form submission
+const forgotPassword = (req, res) => {
+  req.flash('info', 'If an account with that email exists, you will receive an email with instructions to reset your password.');
+  res.redirect('/forgot');
+};
+
 module.exports = {
   renderSignupForm,
   signup,
   renderLoginForm,
   login,
-  logout
+  logout,
+  renderForgotPasswordForm,
+  forgotPassword
 };

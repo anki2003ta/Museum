@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate") -%>
+    <div class="row justify-content-center my-5">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded">
+                <div class="card-body p-4">
+                    <h1 class="text-center mb-4 display-6" style="color: black; font-weight: bold;">Forgot Password</h1>
+                    <form action="/forgot" method="POST" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" id="email" placeholder="Enter your email" type="email"
+                                class="form-control form-control-lg rounded-pill" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please enter a valid email.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 btn-lg rounded-pill mt-3">Reset
+                            Password</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="/login" class="text-decoration-none" style="color: black; font-weight: bold;">Back to
+                            Login</a>
+                    </div>
+                    <p class="text-center mt-4">
+                        Don't have an account? <a href="/signup" class="text-decoration-none">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap form validation -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>

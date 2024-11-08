@@ -1,83 +1,136 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="row">
-  <h1 class="col-6 offset-3">SignUp Form</h1>
-  <div class="col-8 offset-2">
-    <form id="signupForm" action="/signup" method="POST" novalidate>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input name="username" id="username" placeholder="username" type="text" class="form-control" required>
-        <div class="error-message" id="usernameError" style="color: red; display: none;">
-          Please enter a valid username (at least 3 characters).
-        </div>
+<div class="row justify-content-center my-5">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg border-0 rounded">
+      <div class="card-body p-4">
+        <h1 class="text-center mb-4 display-6" style="color: black; font-weight: bold;">Sign Up</h1>
+        
+        <form id="signupForm" action="/signup" method="POST" novalidate>
+          <!-- Username field -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" id="username" placeholder="Enter your username" type="text" class="form-control form-control-lg rounded-pill" required>
+            <div class="error-message" id="usernameError" style="color: red; display: none;">
+              Please enter a valid username (at least 3 characters).
+            </div>
+          </div>
+
+          <!-- Email field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" id="email" placeholder="Enter your email" type="email" class="form-control form-control-lg rounded-pill" required>
+            <div class="error-message" id="emailError" style="color: red; display: none;">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <!-- Password field with toggle -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="position-relative">
+              <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
+              <button type="button" id="togglePassword" class="btn btn-link position-absolute end-0 top-0 mt-2 me-3" style="color: black;">
+                <i class="fas fa-eye"></i>
+              </button>
+              <div class="error-message" id="passwordError" style="color: red; display: none;">
+                Password must be at least 6 characters long.
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password field with toggle -->
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <div class="position-relative">
+              <input name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" type="password" class="form-control form-control-lg rounded-pill" required>
+              <button type="button" id="toggleConfirmPassword" class="btn btn-link position-absolute end-0 top-0 mt-2 me-3" style="color: black;">
+                <i class="fas fa-eye"></i>
+              </button>
+              <div class="error-message" id="confirmPasswordError" style="color: red; display: none;">
+                Passwords do not match.
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-success w-100 btn-lg rounded-pill mt-3">Sign Up</button>
+        </form>
+
+        <p class="text-center mt-4">
+          Already have an account? <a href="/login" class="text-decoration-none">Log In</a>
+        </p>
       </div>
-      
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input name="email" id="email" placeholder="email" type="email" class="form-control" required>
-        <div class="error-message" id="emailError" style="color: red; display: none;">
-          Please enter a valid email address.
-        </div>
-      </div>
-      
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input name="password" id="password" placeholder="password" type="password" class="form-control" required>
-        <div class="error-message" id="passwordError" style="color: red; display: none;">
-          Password must be at least 6 characters long.
-        </div>
-      </div>
-      
-      <button type="submit" class="btn btn-success">SignUp</button>
-    </form>
+    </div>
   </div>
 </div>
 
+<!-- JavaScript form validation and password toggle script -->
 <script>
-// JavaScript form validation
-document.getElementById('signupForm').addEventListener('submit', function (event) {
-  // Prevent form submission for validation
-  event.preventDefault();
-  
-  // Get form fields
-  var username = document.getElementById('username').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var password = document.getElementById('password').value.trim();
-  
-  // Get error message elements
-  var usernameError = document.getElementById('usernameError');
-  var emailError = document.getElementById('emailError');
-  var passwordError = document.getElementById('passwordError');
-  
-  // Reset error messages
-  usernameError.style.display = 'none';
-  emailError.style.display = 'none';
-  passwordError.style.display = 'none';
+  // Existing form validation script
+  document.getElementById('signupForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value.trim();
+    var usernameError = document.getElementById('usernameError');
+    var emailError = document.getElementById('emailError');
+    var passwordError = document.getElementById('passwordError');
+    var confirmPasswordError = document.getElementById('confirmPasswordError');
 
-  // Validation flags
-  var isValid = true;
+    // Reset error messages
+    usernameError.style.display = 'none';
+    emailError.style.display = 'none';
+    passwordError.style.display = 'none';
+    confirmPasswordError.style.display = 'none';
 
-  // Username validation (at least 3 characters)
-  if (username.length < 3) {
-    usernameError.style.display = 'block';
-    isValid = false;
+    var isValid = true;
+    if (username.length < 3) {
+      usernameError.style.display = 'block';
+      isValid = false;
+    }
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      emailError.style.display = 'block';
+      isValid = false;
+    }
+    if (password.length < 6) {
+      passwordError.style.display = 'block';
+      isValid = false;
+    }
+    if (password !== document.getElementById('confirmPassword').value) {
+      confirmPasswordError.style.display = 'block';
+      isValid = false;
+    }
+    if (isValid) {
+      this.submit();
+    }
+  });
+
+  // Toggle password visibility
+  function setupToggle(buttonId, inputId) {
+    const toggleButton = document.getElementById(buttonId);
+    const passwordField = document.getElementById(inputId);
+    toggleButton.addEventListener("click", function () {
+      const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+      passwordField.setAttribute("type", type);
+      this.querySelector("i").classList.toggle("fa-eye");
+      this.querySelector("i").classList.toggle("fa-eye-slash");
+    });
   }
 
-  // Email validation (simple regex pattern)
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    emailError.style.display = 'block';
-    isValid = false;
-  }
+  setupToggle("togglePassword", "password");
+  setupToggle("toggleConfirmPassword", "confirmPassword");
 
-  // Password validation (at least 6 characters)
-  if (password.length < 6) {
-    passwordError.style.display = 'block';
-    isValid = false;
-  }
-
-  // If all validations pass, submit the form
-  if (isValid) {
-    this.submit();  // Submits the form if validation is successful
-  }
-});
+  // Real-time validation for matching passwords
+  document.getElementById("confirmPassword").addEventListener("input", function () {
+    const password = document.getElementById("password").value;
+    const confirmPassword = this.value;
+    const confirmPasswordError = document.getElementById("confirmPasswordError");
+    
+    if (confirmPassword !== password) {
+      confirmPasswordError.style.display = 'block';
+    } else {
+      confirmPasswordError.style.display = 'none';
+    }
+  });
 </script>

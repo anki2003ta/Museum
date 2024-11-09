@@ -1,0 +1,32 @@
+name: Greet User
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  greet_user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet User
+        uses: actions-ecosystem/action-create-comment@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          body: |
+            👋 Hello @${{ github.actor }}!
+
+            Thank you for your ${{
+              github.event_name == 'issues' ? 'issue' : 'pull request'
+            }}. We're glad you're contributing! 
+
+            If this is your first time, please check out our [Contribution Guidelines](https://github.com/OWNER/REPO/blob/main/CONTRIBUTING.md) to get familiar with our process. 
+
+            Happy contributing! 🎉

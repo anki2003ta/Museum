@@ -1,0 +1,42 @@
+name: Duplicate Issue Checker
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check_duplicates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Duplicates
+        uses: actions/issue-labeler@v1
+        id: duplicate_check
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/duplicate-issue-config.yml
+
+      - name: Close and Comment on Duplicate
+        if: steps.duplicate_check.outputs.is_duplicate == 'true'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue_number = context.payload.issue.number;
+            const duplicate_issue_number = steps.duplicate_check.outputs.duplicate_issue_number;
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              state: 'closed'
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: `This issue appears to be a duplicate of #${duplicate_issue_number}. Please follow updates on the original issue.`
+            });

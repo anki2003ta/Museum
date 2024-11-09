@@ -56,6 +56,23 @@
   border: none;
 }
 
+
+.starability-result {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.starability-result:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.starability-result:after {
+  transition: width 0.3s ease;
+}
+
+
 .starability-slot > input {
   position: absolute;
   margin-right: -100%;
@@ -194,4 +211,62 @@
 .starability-slot > input:focus ~ label {
   -webkit-transition: background-position .7s;
   transition: background-position .7s;
+}
+
+
+.starability-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .starability-result:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.starability-result span,
+.starability-result i {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #333;
+  margin: 0 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .starability-result {
+    padding: 0.8rem;
+    max-width: 90%;
+  }
+  
+  .starability-result span,
+  .starability-result i {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .starability-result {
+    padding: 0.6rem;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+
+  .starability-result span,
+  .starability-result i {
+    font-size: 0.9rem;
+  }
 }

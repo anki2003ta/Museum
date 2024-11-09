@@ -18,12 +18,17 @@
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please enter a valid password.
+            <div class="position-relative">
+              <input name="password" id="password" placeholder="Enter your password" type="password" class="form-control form-control-lg rounded-pill" required>
+              <button type="button" id="togglePassword" class="btn btn-link position-absolute end-0 top-0 mt-2 me-3" style="color: black;">
+                <i class="fas fa-eye"></i>
+              </button>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a valid password.
+              </div>
             </div>
           </div>
 
@@ -37,20 +42,34 @@
   </div>
 </div>
 
-<!-- Bootstrap form validation -->
+<!-- Bootstrap form validation and password toggle script -->
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  // Form validation
   (function () {
-    'use strict'
-    var forms = document.querySelectorAll('.needs-validation')
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
     Array.prototype.slice.call(forms).forEach(function (form) {
       form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
+          event.preventDefault();
+          event.stopPropagation();
         }
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+  // Password visibility toggle
+  const togglePassword = document.querySelector("#togglePassword");
+  const passwordField = document.querySelector("#password");
+
+  togglePassword.addEventListener("click", function () {
+    // Toggle the type attribute
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+    
+    // Toggle the eye icon
+    this.querySelector("i").classList.toggle("fa-eye");
+    this.querySelector("i").classList.toggle("fa-eye-slash");
+  });
 </script>
